@@ -36,7 +36,7 @@ def square_sum_jit(input_array: np.ndarray):
 
 
 @measure_time
-@jit(parallel=True)
+@jit(nopython=True, parallel=True)
 def square_sum_prange(input_array: np.ndarray):
     total_sum = 0
     for i in prange(len(input_array)):
@@ -45,6 +45,6 @@ def square_sum_prange(input_array: np.ndarray):
 
 
 @measure_time
-@jit(parallel=True)
+@jit(nopython=True, parallel=True)
 def square_sum_simd_numpy(input_array: np.ndarray):
     return np.sum(np.square(input_array))
